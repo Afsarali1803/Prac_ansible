@@ -2,6 +2,8 @@
   hosts: all
   vars:
      ENV: www.google.com
+   vars_files:
+      - demo.files.yaml
   tasks:
      - name: Testing the variables
        ansible.builtin.debug: 
