@@ -5,3 +5,11 @@
       ansible.builtin.copy:
         src: inv 
         dest: /home/centos/hosts
+
+    - name: Run this when os is centos 
+      ansible.builtin.shell: cat inv
+      register: OUT
+         
+    - name: Rprint 
+      ansible.builtin.debug: 
+       msg: "{{OUT}}"   
