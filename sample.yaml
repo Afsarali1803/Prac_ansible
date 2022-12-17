@@ -9,3 +9,9 @@
               msg: Hai from task2 of play2 
 
 
+- name: Afsarplaybook
+  hosts: dev
+  tasks:
+     - name: "Afsar task1 in Afsarplaybook"
+       ansible.builtin.debug:
+            msg: "Hi, this is afsarplaybook for test"
