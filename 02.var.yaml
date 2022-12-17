@@ -6,7 +6,7 @@
      - name: Testing the variables
        ansible.builtin.debug: 
           msg: "The variable is env is {{ ENV }}"
-     - name: Testing the variables
+     - name: Testing the variables02
         vars: www.devops.com 
         ansible.builtin.debug: 
           msg: "{{ENV}}"
