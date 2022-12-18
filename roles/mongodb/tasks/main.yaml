@@ -1,13 +1,18 @@
+- name: Copy a conf file 
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
 - name: Install mongodb-org
   ansible.builtin.package:
     name: mongodb-org
-    state: present
+    state: installed
 
-- name: Download and extract the src from git 
-  ansible.builtin.unarchive:
-    src: https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
-    dest: /etc/yum.repos.d/mongodb.repo
-    remote_src: yes
+- name: Replace old hostname with new hostname (requires Ansible >= 2.4)
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
 
 - name: Start service mongod
   ansible.builtin.service:
@@ -15,9 +20,18 @@
     state: start
     enabled: yes
 
-- name: clean-up the  directory
-  ansible.builtin.shell:
-    cmd:
+
+# - name: Download and extract the src from git 
+#   ansible.builtin.unarchive:
+#     src: https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
+#     dest: /etc/yum.repos.d/mongodb.repo
+#     remote_src: yes
+
+
+
+# - name: clean-up the  directory
+#   ansible.builtin.shell:
+#     cmd:
 
 - name: Start service Nginx
   ansible.builtin.service:
