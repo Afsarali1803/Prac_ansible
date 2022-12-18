@@ -22,7 +22,7 @@
 - name: Download and extract the src from git 
   ansible.builtin.unarchive:
     src: https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
-    dest: /etc/yum.repos.d/mongodb.repo
+    dest: /tmp
     remote_src: yes
 
 
