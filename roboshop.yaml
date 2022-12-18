@@ -1,5 +1,5 @@
 - name  : "Create roboshop project in ansible"
-  hosts : all
+  hosts : "{{component}}"
   become: yes
   roles:
-     -  frontend
+     - "{{component}}"
