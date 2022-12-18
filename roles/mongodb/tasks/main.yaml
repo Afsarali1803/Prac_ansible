@@ -18,7 +18,7 @@
   ansible.builtin.service:
     name: mongod
     state: start
-    enabled: yes
+    
 
 
 # - name: Download and extract the src from git 
