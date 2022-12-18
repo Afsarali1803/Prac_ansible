@@ -1,0 +1,6 @@
+- name  : "Create roboshop project in ansible"
+  hosts : all
+  roles:
+     -  frontend
+     -  mongodb
+     -  catalogue
