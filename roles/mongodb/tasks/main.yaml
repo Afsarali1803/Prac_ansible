@@ -25,15 +25,28 @@
     dest: /tmp
     remote_src: yes
 
-- name: Run a js file containing MongoDB commands with pseudo-idempotency
+- name: Load Catalogue Schema
   community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/catalogue.js"
+    file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
+  loop: 
+    - catalogue 
+    - users
 
-- name: Run a js file containing MongoDB commands with pseudo-idempotency
-  community.mongodb.mongodb_shell:
-    file: "/tmp/mongodb-main/users.js"
-    idempotent: yes
+# - name: Run tasks/other.yaml instead of 'main'
+#   ansible.builtin.include_role:
+#     name: common
+#     tasks_from: download
+
+# - name: Run a js file containing MongoDB commands with pseudo-idempotency
+#   community.mongodb.mongodb_shell:
+#     file: "/tmp/mongodb-main/catalogue.js"
+#     idempotent: yes
+
+# - name: Run a js file containing MongoDB commands with pseudo-idempotency
+#   community.mongodb.mongodb_shell:
+#     file: "/tmp/mongodb-main/users.js"
+#     idempotent: yes
 
 # - name: clean-up the  directory
 #   ansible.builtin.shell:
