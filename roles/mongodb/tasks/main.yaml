@@ -25,6 +25,11 @@
     dest: /tmp
     remote_src: yes
 
+- name: Run tasks/other.yaml instead of 'main'
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
 - name: Load Catalogue Schema
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
@@ -33,10 +38,6 @@
     - catalogue 
     - users
 
-# - name: Run tasks/other.yaml instead of 'main'
-#   ansible.builtin.include_role:
-#     name: common
-#     tasks_from: download
 
 # - name: Run a js file containing MongoDB commands with pseudo-idempotency
 #   community.mongodb.mongodb_shell:
