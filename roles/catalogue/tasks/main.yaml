@@ -9,6 +9,13 @@
   loop: 
     - nodejs 
     - gcc-c++  
+
+- name: Add the user 'roboshop'
+  ansible.builtin.user:
+    name: roboshop
+    comment: roboshop user application account
+
+  
 # - name: Install nginx
 #   ansible.builtin.package:
 #     name: nginx
