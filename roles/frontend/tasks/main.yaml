@@ -1,0 +1,10 @@
+- name: Install ntpdate
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+# - name: Download the src from git 
+#   ansible.builtin.unarchive:
+#     src: https://github.com/stans-robot-project/frontend/archive/main.zip
+#     dest: /tmp/frontend
+#     remote_src: yes
