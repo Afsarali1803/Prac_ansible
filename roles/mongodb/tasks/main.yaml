@@ -26,7 +26,6 @@
     remote_src: yes
 
 
-
 # - name: clean-up the  directory
 #   ansible.builtin.shell:
 #     cmd:
