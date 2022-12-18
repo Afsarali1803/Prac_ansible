@@ -33,11 +33,11 @@
 #   ansible.builtin.shell:
 #     cmd:
 
-- name: Start service Nginx
-  ansible.builtin.service:
-    name: mongod
-    state: restarted
-    enabled: yes
+# - name: Start service Nginx
+#   ansible.builtin.service:
+#     name: mongod
+#     state: restarted
+#     enabled: yes
 
 
 
