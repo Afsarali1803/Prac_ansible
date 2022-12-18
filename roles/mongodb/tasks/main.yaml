@@ -1,32 +1,29 @@
-- name: Install nginx
+- name: Install mongodb-org
   ansible.builtin.package:
-    name: nginx
+    name: mongodb-org
     state: present
 
 - name: Download and extract the src from git 
   ansible.builtin.unarchive:
-    src: https://github.com/stans-robot-project/frontend/archive/main.zip
-    dest: /tmp
+    src: https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
+    dest: /etc/yum.repos.d/mongodb.repo
     remote_src: yes
+
+- name: Start service mongod
+  ansible.builtin.service:
+    name: mongod
+    state: start
+    enabled: yes
 
 - name: clean-up the  directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
-
-- name: Copy a localhost file 
-  ansible.builtin.copy:
-    src: /tmp/frontend-main/static/
-    dest: /usr/share/nginx/html
-    remote_src: yes
-
-- name: Copy a conf file 
-  ansible.builtin.copy:
-    src: roboshop.conf
-    dest: /etc/nginx/default.d
+  ansible.builtin.shell:
+    cmd:
 
 - name: Start service Nginx
   ansible.builtin.service:
-    name: nginx
+    name: mongod
     state: restarted
     enabled: yes
+
+
+
