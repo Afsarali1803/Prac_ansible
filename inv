@@ -1,9 +1,8 @@
-[frontend]
-frontend.roboshop.internal
+[dev]
+44.204.74.226
 
-[mongodb]
-mongodb.roboshop.internal
+[prod]
+35.173.177.21
 
-[catalogue]
-catalogue.roboshop.internal
+
 
